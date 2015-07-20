@@ -1,5 +1,1 @@
-SELECT student_id, MAX( amount ) 
-FROM payments
-GROUP BY student_id
-ORDER BY MAX( amount ) DESC 
-LIMIT 1 , 2
+SELECT student_id, MAX(amount) FROM payments GROUP BY student_id ORDER BY MAX(amount) DESC LIMIT 1,2
