@@ -1,0 +1,40 @@
+<?php
+
+function quickSort(&$a, $l = 0, $r = 0) {
+	if($r == 0) $r = count($a)-1;
+	$i = $l;
+	$j = $r;
+	$x = $a[($l + $r) / 2];
+	do {
+		while ($a[$i] < $x) $i++;
+		while ($a[$j] > $x) $j--;
+		if ($i <= $j) {
+			if ($a[$i] > $a[$j])
+				list($a[$i], $a[$j]) = array($a[$j], $a[$i]);
+			$i++;
+			$j--;
+		}
+	} while ($i <= $j);
+	$function = __FUNCTION__;
+	if ($i < $r) $function($a, $i, $r);
+	if ($j > $l) $function($a, $l, $j);
+}
+
+$arr=array();
+$arr[]='1234567890 2013-03-08 12:26:09';
+$arr[]='0987654321 2013-03-09 09:23:17';
+$arr[]='1234567890 2014-01-01 00:00:34';
+$arr[]='0087645544 2015-02-03 17:45:01';
+$arr[]='0087645544 2015-01-03 11:05:06';
+echo 'Исходный массив:';
+echo '<pre>';
+var_dump($arr);
+echo '</pre>';
+
+quickSort($arr);
+echo 'Результирующий массив:';
+echo '<pre>';
+var_dump($arr);
+echo '</pre>';
+
+?>
