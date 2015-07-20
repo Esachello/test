@@ -1,5 +1,5 @@
-SELECT student.*, count(payments.amount) FROM student 
-left outer join payments ON student.id = payments.student_id
+SELECT student.name, student.surname FROM student 
+LEFT OUTER JOIN payments ON student.id = payments.student_id
 JOIN student_status b1 ON (student.id = b1.student_id)
 LEFT OUTER JOIN student_status b2 ON (student.id = b2.student_id AND (b1.datetime < b2.datetime OR b1.datetime = b2.datetime AND b1.id < b2.id))
 WHERE payments.amount>0 AND b1.status='lost'
