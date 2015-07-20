@@ -1,0 +1,1 @@
+SELECT a.name, a.surname FROM student a JOIN student_status b1 ON (a.id = b1.student_id) LEFT OUTER JOIN student_status b2 ON (a.id = b2.student_id AND (b1.datetime < b2.datetime OR b1.datetime = b2.datetime AND b1.id < b2.id)) WHERE b2.id IS NULL AND a.gender='unknown' AND b1.status='vacation';
